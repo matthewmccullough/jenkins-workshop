@@ -69,6 +69,10 @@
 * Set up an Ant build with automatic install
 * https://github.com/apache/commons-io
 * Check out branch `commons-io-2.1`
+* Ant manual install*
+    * http://ant.apache.org/bindownload.cgi
+    * Add to PATH environment variable
+    * Test from command line with `ant`
 
 ## Set up a Maven Multi-Module Build
 * Git hosted source
