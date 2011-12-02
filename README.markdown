@@ -1,11 +1,12 @@
 # Jenkins Workshop
+This is the Jenkins Continuous Integration workshop run by Matthew McCullough of Ambient Ideas, LLC.
 
 ## Resources
-* Free [O'Reilly Jenkins eBook](http://www.wakaleo.com/books/jenkins-the-definitive-guide)
+* Download the free [O'Reilly Jenkins eBook](http://www.wakaleo.com/books/jenkins-the-definitive-guide)
 
 ## Set up  Supporting Tools
 * Git
-    * Install Git*
+    * Install Git
     * Test that Git is working by running `git --version`
 * Maven
     * Auto install option in Management console
@@ -24,9 +25,9 @@
     * 1.8.2
 
 ## Set up Jenkins
-* Download Jenkins WAR*
+* Download Jenkins WAR
 * Run `java -jar jenkins.war` which runs on port 8080
-* Alternatively, run on a different port `*java -jar jenkins.war --httpPort=8090`
+* Alternatively, run on a different port `java -jar jenkins.war --httpPort=8090`
 * Test Jenkins is running by opening `http://localhost:8080`
 
 ## Echo Job
@@ -69,7 +70,7 @@
 * Set up an Ant build with automatic install
 * https://github.com/apache/commons-io
 * Check out branch `commons-io-2.1`
-* Ant manual install*
+* Ant manual install
     * http://ant.apache.org/bindownload.cgi
     * Add to PATH environment variable
     * Test from command line with `ant`
