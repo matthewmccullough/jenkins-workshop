@@ -1,16 +1,31 @@
 # Jenkins Workshop
 
+## Resources
+* Free [O'Reilly Jenkins eBook](http://www.wakaleo.com/books/jenkins-the-definitive-guide)
+
 ## Set up  Supporting Tools
 * Git
+    * Install Git*
+    * Test that Git is working by running `git --version`
 * Maven
     * Auto install option in Management console
-    * Head start by copying .m2/repository from USB
+    * Or install manually
+    * Can have multiple versions in Jenkins administration
 * JDK
     * Also available via auto-install
 * Sonar
+    * Manually install
 * Gradle
+    * Auto-install
+    * Or run from wrapper
 
 ## Set up Jenkins
+* Download Jenkins WAR*
+* Run `java -jar jenkins.war` which runs on port 8080
+* Alternatively, run on a different port `*java -jar jenkins.war --httpPort=8090`
+* Test Jenkins is running by opening `http://localhost:8080`
+
+## Basic Jenkins Setup
 * Install Git plugin
 * Remember .git at end of local file path
 
