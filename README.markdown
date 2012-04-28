@@ -1,5 +1,5 @@
 # Jenkins Workshop
-This is the Jenkins Continuous Integration workshop run by Matthew McCullough of Ambient Ideas, LLC.
+This is the Jenkins Continuous Integration workshop run by Matthew McCullough.
 
 ## Resources
 * Download the free [O'Reilly Jenkins eBook](http://www.wakaleo.com/books/jenkins-the-definitive-guide)
@@ -16,34 +16,42 @@ This is the Jenkins Continuous Integration workshop run by Matthew McCullough of
     * Also available via auto-install
 * Sonar
     * Manually install
+    * Only used in today's workshop if already installed
 * Gradle
     * Auto-install
     * Or run from wrapper
-    * 1.0-milestone-6
+    * 1.0-rc-2
 * Ant
     * Auto install
-    * 1.8.2
+    * 1.8.3
 
 ## Set up Jenkins
-* Download Jenkins WAR
+* Download Jenkins WAR from local content server or ['http://jenkins-ci.org'](http://jenkins-ci.org)
 * Run `java -jar jenkins.war` which runs on port 8080
 * Alternatively, run on a different port `java -jar jenkins.war --httpPort=8090`
-* Test Jenkins is running by opening `http://localhost:8080`
+* Test Jenkins is running by opening [`http://localhost:8080`](http://localhost:8080)
 
 ## Echo Job
-* New Job
-* Freestyle
-* echo "My Build Worked"
+* Create a new Freestyle job named `echojob`
+* Add an *Execute shell* build step or *Execute Windows batch command* as appropriate for your OS.
+* In the build step, echo some text with `echo MyBuildWorked`
 
 ## SVN Checkout
-* Built-in SVN plugin
-* http://svn.apache.org/repos/asf/commons/proper/logging/trunk
-* Freestyle project*
-* Echo the contents of the LICENSE.txt
+* We'll use the built-in SVN plugin
+* Create a new Freestyle job named `svncheckout`
+* Add source code URL `http://svn.apache.org/repos/asf/commons/proper/logging/trunk`
+* Add an *Execute shell* build step or *Execute Windows batch command* as appropriate for your OS.
+* In the build step, echo the contents of the `LICENSE.txt` file.
+    * If Windows, `cat LICENSE.txt`
+    * If *NIX, `echo LICENSE.txt`
 
 ## Poll SCM
-* Set to * * * * *
-* Matthew will commit
+* Create a new Freestyle job named `pollscm`
+* Turn on the Git SCM
+* Add repo URL `https://github.com/matthewmccullough/hellogitworld`
+* Turn on the *Poll SCM* build trigger.
+* Set the frequency to `* * * * *`
+* Matthew will commit a change to cause students poll to
 
 ## Jenkins Plugins
 * 492 Plugins
