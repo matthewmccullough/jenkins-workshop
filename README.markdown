@@ -1,28 +1,32 @@
 # Jenkins Workshop
 This is the Jenkins Continuous Integration workshop run by Matthew McCullough.
 
+This latest version of this page can be found at <https://github.com/matthewmccullough/jenkins-workshop>
+
 ## Resources
-* Download the free [O'Reilly Jenkins eBook](http://www.wakaleo.com/books/jenkins-the-definitive-guide)
+* Download the free [O'Reilly Jenkins eBook](http://www.wakaleo.com/books/jenkins-the-definitive-guide).
+* Review Matthew's [curated Jenkins bookmarks](http://delicious.com/matthew.mccullough/jenkins).
 
 ## Set up  Supporting Tools
 * Git
-    * Install Git
-    * Test that Git is working by running `git --version`
+    * Test if you already have Git installed by typing `git --version`
+    * If needed, install Git from platform-specific binary installers
+    * After install, test that Git is working by running `git --version`
 * Maven
-    * Auto install option in Management console
+    * Available as *Auto install* option in Jenkins Management page
     * Or install manually
     * Can have multiple versions in Jenkins administration
 * JDK
-    * Also available via auto-install
+    * Available as *Auto install* option in Jenkins Management page
 * Sonar
     * Manually install
     * Only used in today's workshop if already installed
 * Gradle
-    * Auto-install
-    * Or run from wrapper
+    * Available as *Auto install* option in Jenkins Management page
+    * Can also be auto-downloaded via Gradle wrapper
     * 1.0-rc-2
 * Ant
-    * Auto install
+    * Available as *Auto install* option in Jenkins Management page
     * 1.8.3
 
 ## Set up Jenkins
@@ -36,37 +40,40 @@ This is the Jenkins Continuous Integration workshop run by Matthew McCullough.
 * Add an *Execute shell* build step or *Execute Windows batch command* as appropriate for your OS.
 * In the build step, echo some text with `echo MyBuildWorked`
 
+## Jenkins Plugins
+* 543 Plugins
+* https://github.com/jenkinsci
+
+## SCM Configuration
+* The SVN plugin is preinstalled
+* Manually install the Git plugin and restart Jenkins
+    * Click the "Manage Jenkins" link
+    * Click the "Manage Plugins" link
+* Review ~20 others that I typically use
+
 ## SVN Checkout
 * We'll use the built-in SVN plugin
 * Create a new Freestyle job named `svncheckout`
 * Add source code URL `http://svn.apache.org/repos/asf/commons/proper/logging/trunk`
 * Add an *Execute shell* build step or *Execute Windows batch command* as appropriate for your OS.
 * In the build step, echo the contents of the `LICENSE.txt` file.
-    * If Windows, `cat LICENSE.txt`
-    * If *NIX, `echo LICENSE.txt`
+    * Add script contents: `cat LICENSE.txt`
 
 ## Poll SCM
 * Create a new Freestyle job named `pollscm`
-* Turn on the Git SCM
-* Add repo URL `https://github.com/matthewmccullough/hellogitworld`
-* Turn on the *Poll SCM* build trigger.
+* Turn on the *Source Code Management* radio button labeled *Git*
+* Add Repository URL `https://github.com/matthewmccullough/hellogitworld/trunk`
+* Turn on the *Build Trigger* labeled *Poll SCM*.
 * Set the frequency to `* * * * *`
-* Matthew will commit a change to cause students poll to
-
-## Jenkins Plugins
-* 492 Plugins
-* https://github.com/jenkinsci
-
-## SCM Configuration
-* Install Git
-* SVN preinstalled
-* 20 others
+    * This indicates *every one minute of every day*
+* Matthew will commit a change to cause the students SCM polling to find an update
+* Click the *Git Polling Log* link to view the history of polling
 
 ## SVN Checkout, Ant Build
-* Add a Freestyle project
-* Git version control
-* https://github.com/apache/commons-io/tags/commons-io-2.1
-
+* Create a new Freestyle job named `svnantbuild`
+* Turn on the *Source Code Management* radio button labeled *Subversion*
+* Add Repository URL `https://github.com/apache/commons-io/tags/commons-io-2.1/`
+* Yes, this is a Subversion checkout from GitHub
 
 ## Git Source Code Jenkins Setup
 * Path to a local repo
@@ -76,16 +83,16 @@ This is the Jenkins Continuous Integration workshop run by Matthew McCullough.
 
 ## Git Checkout, Ant Build
 * Set up an Ant build with automatic install
-* https://github.com/apache/commons-io
+* `https://github.com/apache/commons-io`
 * Check out branch `commons-io-2.1`
 * Ant manual install
-    * http://ant.apache.org/bindownload.cgi
+    * <http://ant.apache.org/bindownload.cgi>
     * Add to PATH environment variable
     * Test from command line with `ant`
 
 ## Set up a Maven Multi-Module Build
 * Git hosted source
-* https://github.com/wakaleo/game-of-life
+* `https://github.com/wakaleo/game-of-life`
 
 ## Advanced Git Configuration
 * Git
@@ -103,7 +110,7 @@ This is the Jenkins Continuous Integration workshop run by Matthew McCullough.
 * Basic and Advanced
 * SMTP: smtp.gmail.com
 * User: workshopsender@gmail.com
-* Password: workshop1
+* Password: workshop12
 
 ## Remote Trigger URLs
 * Secret URL to invoke a build
