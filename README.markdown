@@ -8,6 +8,8 @@ This latest version of this page can be found on [GitHub](https://github.com/mat
 * Review Matthew's [curated Jenkins bookmarks](http://delicious.com/matthew.mccullough/jenkins).
 * [Jenkins Official Welcome Site](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)
 * [Jenkins Tutorials](http://jenkins-ci.org/views/hudson-tutorials)
+* [Jenkins Homepage](http://jenkins-ci.org)
+* [Jenkins Usage Guide](https://wiki.jenkins-ci.org/display/JENKINS/Use+Jenkins)
 
 ## Set up Supporting Tools
 * Git
