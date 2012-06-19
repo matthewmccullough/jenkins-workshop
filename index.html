@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Jenkins Workshop by matthewmccullough</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Jenkins Workshop</h1>
+        <p>A guided tutorial</p>
+        <p class="view"><a href="https://github.com/matthewmccullough/jenkins-workshop">View the Project on GitHub <small>matthewmccullough/jenkins-workshop</small></a></p>
+        <ul>
+          <li><a href="https://github.com/matthewmccullough/jenkins-workshop/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/matthewmccullough/jenkins-workshop/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/matthewmccullough/jenkins-workshop">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Jenkins Workshop</h1>
+
+<p>This is the <a href="http://jenkins-ci.org">Jenkins Continuous Integration</a> workshop run by Matthew McCullough.</p>
+
+<p>This latest version of this page can be found on <a href="https://github.com/matthewmccullough/jenkins-workshop">GitHub</a>.</p>
+
+<h2>Resources</h2>
+
+<ul>
+<li>Download the free <a href="http://www.wakaleo.com/books/jenkins-the-definitive-guide">O'Reilly Jenkins eBook</a> by John Ferguson Smart.</li>
+<li>Review Matthew's <a href="http://delicious.com/matthew.mccullough/jenkins">curated Jenkins bookmarks</a>.</li>
+<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins">Jenkins Official Welcome Site</a></li>
+<li><a href="http://jenkins-ci.org/views/hudson-tutorials">Jenkins Tutorials</a></li>
+<li><a href="http://jenkins-ci.org">Jenkins Homepage</a></li>
+<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/Use+Jenkins">Jenkins Usage Guide</a></li>
+</ul><h2>Set up Supporting Tools</h2>
+
+<ul>
+<li>Git
+
+<ul>
+<li>Test if you already have Git installed by typing <code>git --version</code>
+</li>
+<li>If needed, install Git from platform-specific binary installers</li>
+<li>After install, test that Git is working by running <code>git --version</code>
+</li>
+</ul>
+</li>
+<li>Maven
+
+<ul>
+<li>Available as <em>Auto install</em> option in Jenkins Management page</li>
+<li>Or install manually</li>
+<li>Can have multiple versions in Jenkins administration</li>
+</ul>
+</li>
+<li>JDK
+
+<ul>
+<li>Available as <em>Auto install</em> option in Jenkins Management page</li>
+</ul>
+</li>
+<li>Sonar
+
+<ul>
+<li>Manually install</li>
+<li>Only used in today's workshop if already installed</li>
+</ul>
+</li>
+<li>Gradle
+
+<ul>
+<li>Available as <em>Auto install</em> option in Jenkins Management page</li>
+<li>Can also be auto-downloaded via Gradle wrapper</li>
+<li>1.0-rc-2</li>
+</ul>
+</li>
+<li>Ant
+
+<ul>
+<li>Available as <em>Auto install</em> option in Jenkins Management page</li>
+<li>1.8.3</li>
+</ul>
+</li>
+</ul><h2>Set up Jenkins</h2>
+
+<ul>
+<li>Download Jenkins WAR from local content server or <a href="http://jenkins-ci.org">'http://jenkins-ci.org'</a>
+</li>
+<li>Run <code>java -jar jenkins.war</code> which runs on port 8080</li>
+<li>Alternatively, run on a different port <code>java -jar jenkins.war --httpPort=8090</code>
+</li>
+<li>Test Jenkins is running by opening <a href="http://localhost:8080"><code>http://localhost:8080</code></a>
+</li>
+</ul><h2>Echo Job</h2>
+
+<ul>
+<li>Create a new Freestyle job named <code>echojob</code>
+</li>
+<li>Add an <em>Execute shell</em> build step or <em>Execute Windows batch command</em> as appropriate for your OS.</li>
+<li>In the build step, echo some text with <code>echo MyBuildWorked</code>
+</li>
+</ul><h2>Jenkins Plugins</h2>
+
+<ul>
+<li>543 Plugins</li>
+<li><a href="https://github.com/jenkinsci">https://github.com/jenkinsci</a></li>
+</ul><h2>SCM Configuration</h2>
+
+<ul>
+<li>The SVN plugin is preinstalled</li>
+<li>Manually install the Git plugin and restart Jenkins
+
+<ul>
+<li>Click the "Manage Jenkins" link</li>
+<li>Click the "Manage Plugins" link</li>
+</ul>
+</li>
+<li>Review ~20 others that I typically use</li>
+</ul><h2>SVN Checkout</h2>
+
+<ul>
+<li>We'll use the built-in SVN plugin</li>
+<li>Create a new Freestyle job named <code>svncheckout</code>
+</li>
+<li>Add source code URL <code>http://svn.apache.org/repos/asf/commons/proper/logging/trunk</code>
+</li>
+<li>Add an <em>Execute shell</em> build step or <em>Execute Windows batch command</em> as appropriate for your OS.</li>
+<li>In the build step, echo the contents of the <code>LICENSE.txt</code> file.
+
+<ul>
+<li>Add script contents: <code>cat LICENSE.txt</code>
+</li>
+</ul>
+</li>
+</ul><h2>Poll SCM</h2>
+
+<ul>
+<li>Create a new Freestyle job named <code>pollscm</code>
+</li>
+<li>Turn on the <em>Source Code Management</em> radio button labeled <em>Git</em>
+</li>
+<li>Add Repository URL <code>https://github.com/matthewmccullough/hellogitworld/trunk</code>
+</li>
+<li>Turn on the <em>Build Trigger</em> labeled <em>Poll SCM</em>.</li>
+<li>Set the frequency to <code>* * * * *</code>
+
+<ul>
+<li>This indicates <em>every one minute of every day</em>
+</li>
+</ul>
+</li>
+<li>Matthew will commit a change to cause the students SCM polling to find an update</li>
+<li>Click the <em>Git Polling Log</em> link to view the history of polling</li>
+</ul><h2>SVN Checkout, Ant Build</h2>
+
+<ul>
+<li>Create a new Freestyle job named <code>svnantbuild</code>
+</li>
+<li>Turn on the <em>Source Code Management</em> radio button labeled <em>Subversion</em>
+</li>
+<li>Add Repository URL <code>https://github.com/apache/commons-io/tags/commons-io-2.1/</code>
+</li>
+<li>Yes, this is a Subversion checkout from GitHub</li>
+</ul><h2>Git Source Code Jenkins Setup</h2>
+
+<ul>
+<li>Path to a local repo</li>
+<li>Remember .git at end of local file path</li>
+<li>Set up a new Job</li>
+<li><code>file://&lt;YOURPATH&gt;</code></li>
+</ul><h2>Git Checkout, Ant Build</h2>
+
+<ul>
+<li>Set up an Ant build with automatic install</li>
+<li><code>https://github.com/apache/commons-io</code></li>
+<li>Check out branch <code>commons-io-2.1</code>
+</li>
+<li>Ant manual install
+
+<ul>
+<li><a href="http://ant.apache.org/bindownload.cgi">http://ant.apache.org/bindownload.cgi</a></li>
+<li>Add to PATH environment variable</li>
+<li>Test from command line with <code>ant</code>
+</li>
+</ul>
+</li>
+</ul><h2>Set up a Maven Multi-Module Build</h2>
+
+<ul>
+<li>Git hosted source</li>
+<li><code>https://github.com/wakaleo/game-of-life</code></li>
+</ul><h2>Advanced Git Configuration</h2>
+
+<ul>
+<li>Git
+
+<ul>
+<li>Which branches to build</li>
+<li>Merging branches as a pre-build and post-build step</li>
+<li>Publishing result branches on success</li>
+</ul>
+</li>
+<li>Parameters
+
+<ul>
+<li>Can pass through SHA1</li>
+</ul>
+</li>
+</ul><h2>Compile Time Plugins</h2>
+
+<ul>
+<li>Compiler warnings</li>
+<li>Violations plugin</li>
+</ul><h2>Email Notification</h2>
+
+<ul>
+<li>Basic and Advanced</li>
+<li>SMTP: smtp.gmail.com</li>
+<li>User: <a href="mailto:workshopsender@gmail.com">workshopsender@gmail.com</a>
+</li>
+<li>Password: workshop12</li>
+</ul><h2>Remote Trigger URLs</h2>
+
+<ul>
+<li>Secret URL to invoke a build</li>
+<li>http://localhost:8080/job/GradleTest/build?token=1111</li>
+<li>Can be CURLed</li>
+</ul><h2>Archive</h2>
+
+<ul>
+<li>Choose which artifacts of the build are saved permanently</li>
+<li>Glob pattern</li>
+</ul><h2>Fingerprints</h2>
+
+<ul>
+<li>Choose which items to fingerprint</li>
+<li>Look up a fingerprint</li>
+</ul><h2>Collectors</h2>
+
+<ul>
+<li>Junit</li>
+<li>TestNG</li>
+<li>Compiler warnings</li>
+<li>Parsing TXT, XML files</li>
+</ul><h2>Monitoring</h2>
+
+<ul>
+<li>JUnit report collector</li>
+<li>Code coverage graph</li>
+</ul><h2>Post-build Steps</h2>
+
+<ul>
+<li>Promote</li>
+<li>Announce</li>
+<li>Blame developer with commits</li>
+<li>Send mail on success or failure</li>
+</ul><h2>Project Dependencies</h2>
+
+<ul>
+<li>Dependency graphs of projects</li>
+<li>GraphViz CLI tool <code>dot</code>
+</li>
+</ul><h2>Radiators</h2>
+
+<ul>
+<li>Dashboard</li>
+<li>Adding more columns to primary view
+** Cron schedule
+** Type</li>
+<li>Filtering primary view (tabs)</li>
+</ul><h2>Slaves</h2>
+
+<ul>
+<li>Types
+
+<ul>
+<li>Interactive JNLP</li>
+<li>Headless JNLP</li>
+<li>SSH</li>
+<li>EC2</li>
+</ul>
+</li>
+<li>Usage graph (do you need more nodes)</li>
+</ul><h2>Build Promotions</h2>
+
+<ul>
+<li>Automatic promotion?</li>
+<li>Manual promotion (mark as success)</li>
+</ul><h2>Pipelines</h2>
+
+<ul>
+<li>Plugin for showing connection from one job to another</li>
+</ul><h2>Command Line</h2>
+
+<ul>
+<li>Download the JAR</li>
+<li>Get help <code>java -jar jenkins-cli.jar -s http://localhost:8080/ help</code>
+</li>
+</ul>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/matthewmccullough">matthewmccullough</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
