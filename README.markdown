@@ -6,6 +6,8 @@ This latest version of this page can be found on [GitHub](https://github.com/mat
 ## Resources
 * Download the free [O'Reilly Jenkins eBook](http://www.wakaleo.com/books/jenkins-the-definitive-guide) by John Ferguson Smart.
 * Review Matthew's [curated Jenkins bookmarks](http://delicious.com/matthew.mccullough/jenkins).
+* [Jenkins Official Welcome Site](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)
+* [Jenkins Tutorials](http://jenkins-ci.org/views/hudson-tutorials)
 
 ## Set up Supporting Tools
 * Git
