@@ -1,13 +1,13 @@
 # Jenkins Workshop
-This is the Jenkins Continuous Integration workshop run by Matthew McCullough.
+This is the [Jenkins Continuous Integration](http://jenkins-ci.org) workshop run by Matthew McCullough.
 
-This latest version of this page can be found at <https://github.com/matthewmccullough/jenkins-workshop>
+This latest version of this page can be found on [GitHub](https://github.com/matthewmccullough/jenkins-workshop).
 
 ## Resources
-* Download the free [O'Reilly Jenkins eBook](http://www.wakaleo.com/books/jenkins-the-definitive-guide).
+* Download the free [O'Reilly Jenkins eBook](http://www.wakaleo.com/books/jenkins-the-definitive-guide) by John Ferguson Smart.
 * Review Matthew's [curated Jenkins bookmarks](http://delicious.com/matthew.mccullough/jenkins).
 
-## Set up  Supporting Tools
+## Set up Supporting Tools
 * Git
     * Test if you already have Git installed by typing `git --version`
     * If needed, install Git from platform-specific binary installers
